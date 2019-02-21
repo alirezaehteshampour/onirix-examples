@@ -401,6 +401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 994504711}
+  - component: {fileID: 994504712}
   - component: {fileID: 994504710}
   - component: {fileID: 994504709}
   - component: {fileID: 994504708}
@@ -423,8 +424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db674ce60b064c2487eed397e68021a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI3NSwicHJvamVjdElkIjo1NjMsInJvbGUiOiJwcm9qZWN0IiwiaWF0IjoxNTQ4ODMyNzcwfQ.k-Ba4oJyO5aaX62vHAUGU7LX6EQ-pQxFkmlDC5KtFao
-  _projectOid: bb9e49c5d5724b249c682e5988f1b12b
   _statusText: {fileID: 56491186}
 --- !u!114 &994504708
 MonoBehaviour:
@@ -437,11 +436,11 @@ MonoBehaviour:
   m_Script: {fileID: 37411169, guid: 754832bcf14ad46798155c1fdafbc8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _default2DElement: {fileID: 1408934388374492, guid: a9d6da2f7267d43f4adbf037a8fec124,
+  _default2DElement: {fileID: 1392449664347130, guid: 74932667f8b474d41b38d3f3bb6d74bb,
     type: 2}
   _default3DElement: {fileID: 1331863014479234, guid: 0beac0bff137e4a3791883bfb31d7be6,
     type: 2}
-  _defaultVideoElement: {fileID: 1123254537698436, guid: ab53e2776a110454bba8970cde8b6c4b,
+  _defaultVideoElement: {fileID: 1524100016481000, guid: 360fa4719f76643af85329d7cd341ca1,
     type: 2}
   _defaultAudioElement: {fileID: 1817233494109462, guid: 0c61381efc77c4a7b9f8502983e6f9a5,
     type: 2}
@@ -494,6 +493,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &994504712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 994504706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1710150095, guid: 754832bcf14ad46798155c1fdafbc8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _token: <PROJECT_TOKEN_HERE>
 --- !u!1 &1928636844
 GameObject:
   m_ObjectHideFlags: 0

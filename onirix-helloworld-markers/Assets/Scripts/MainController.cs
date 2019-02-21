@@ -7,32 +7,8 @@ using Onirix.Core.Model;
 
 public class MainController : MonoBehaviour, IDynamicLoadListener
 {
-
-    // Token that allows us to access the Onirix project from the SDK.
-    [SerializeField] private string _projectToken;
-
-    // Oid of the project that we want to use.
-    [SerializeField] private string _projectOid;
-
     // Label for messages that will show the status of the application.
     [SerializeField] private Text _statusText;
-
-    /* Instance of the OnirixMobileManager. It is in charge of managing everything
-     * that has to do with the AR in our app. */
-    private OnirixMobileManager _onirixMobileManager;
-
-    // A public getter property to get that reference.
-    public OnirixMobileManager MobileManager
-    {
-        get
-        {
-            if (!_onirixMobileManager)
-        {
-            _onirixMobileManager = gameObject.GetComponent<OnirixMobileManager>();
-        }
-        return _onirixMobileManager;
-        }
-    }
 
     // Fires when all target's assets are downloaded from Onirix Studio
     public void OnTargetAssetsDownloaded(Target target)
@@ -66,36 +42,39 @@ public class MainController : MonoBehaviour, IDynamicLoadListener
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         // Initialize the DynamicLoadManager, which will load our Target.
-        DynamicLoadManager.Instance.Init(MobileManager, _projectToken, this);
+        OnirixDynamicLoader.Instance.Init(this);
 
         StartCoroutine
+        (
+            WaitForAR
             (
-                WaitForAR
-                (
-                    () =>
-                    {
-                        // Start markers detection
-                        MobileManager.StartDetection(_projectOid, _projectToken,
-                            (detectedTarget) =>
-                            {
-                                // Hide the default crosshair
-                                MobileManager.HideCrosshair();
+                () =>
+                {
+                    // The OnirixMobileManager is in charge of managing everything related to AR tasks in our app.
 
-                                // When a marker is detected. Let's load it's assets .
-                                _statusText.text = "Loading target {detectedTarget}, please wait ...";
-                                DynamicLoadManager.Instance.LoadTarget(detectedTarget);
-                            }
-                        );
+                    // Start markers detection
+                    OnirixMobileManager.Instance.StartMarkerDetection
+                    (
+                        (detectedTarget) =>
+                        {
+                            // Hide the default crosshair
+                            OnirixMobileManager.Instance.HideCrosshair();
 
-                    }
-                )
-            );
+                            // When a marker is detected. Let's load it's assets .
+                            _statusText.text = "Loading target {detectedTarget}, please wait ...";
+                            OnirixDynamicLoader.Instance.LoadTarget(detectedTarget);
+                        }
+                    );
+
+                }
+            )
+        );
     }
 
     // Wait until ARKit / ARCore are initialized.
     private IEnumerator WaitForAR(System.Action onReady)
     {
-        yield return new WaitUntil(() => MobileManager.IsReady);
+        yield return new WaitUntil(() => OnirixMobileManager.Instance.IsReady);
         onReady();
     }
 
