@@ -5,26 +5,15 @@ using Onirix.MobileSDK;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainController : MonoBehaviour, IDynamicLoadListener {
+public class MainController : MonoBehaviour, IDynamicLoadListener 
+{
+    private const string TargetOidPlaceholder = "<TARGET_OID_HERE>";
 
-    [SerializeField] private string _projectToken;
-    [SerializeField] private string _targetOid;
+    [SerializeField] private string _targetOid = TargetOidPlaceholder;
     [SerializeField] private Button _loadTargetButton;
-    [SerializeField] private Text _statusText;
+    [SerializeField] private Text   _statusText;
 
-    private OnirixMobileManager _onirixMobileManager;
-
-    public OnirixMobileManager MobileManager
-    {
-        get
-        {
-            if (!_onirixMobileManager)
-            {
-                _onirixMobileManager = gameObject.GetComponent<OnirixMobileManager>();
-            }
-            return _onirixMobileManager;
-        }
-    }
+    public string TargetOid { get; private set; }
 
     public void OnTargetAssetsDownloaded(Target target)
     {
@@ -34,7 +23,7 @@ public class MainController : MonoBehaviour, IDynamicLoadListener {
     public void OnTargetAssetsLoaded(Target target)
     {
         _statusText.text = "Target assets loaded!";
-        MobileManager.ShowCrosshair();
+        OnirixMobileManager.Instance.ShowCrosshair();
     }
 
     public void OnTargetAssetsStartDownloading(Target target)
@@ -47,12 +36,17 @@ public class MainController : MonoBehaviour, IDynamicLoadListener {
         _statusText.text = "Target assets started loading!";
     }
 
-    // Use this for initialization
-    void Start () {
+    void Awake ()
+    {
+        TargetOid = (_targetOid.Equals(TargetOidPlaceholder) ? null : _targetOid);
+    }
 
+    // Use this for initialization
+    void Start () 
+    {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-        DynamicLoadManager.Instance.Init(MobileManager, _projectToken, this);
+        OnirixDynamicLoader.Instance.Init(this);
 
         _loadTargetButton.interactable = false;
 
@@ -62,7 +56,7 @@ public class MainController : MonoBehaviour, IDynamicLoadListener {
             (
                 () =>
                 {
-                    MobileManager.StartSurfaceTarget
+                    OnirixMobileManager.Instance.StartSurfaceDetection
                     (
                         () =>
                         {
@@ -81,10 +75,10 @@ public class MainController : MonoBehaviour, IDynamicLoadListener {
 
         _loadTargetButton.onClick.AddListener(() =>
         {
-            DynamicLoadManager.Instance.LoadTarget(_targetOid);
+            OnirixDynamicLoader.Instance.LoadTarget(TargetOid);
             _statusText.text = "Loading target, please wait ...";
             _loadTargetButton.interactable = false;
-            MobileManager.HideCrosshair();
+            OnirixMobileManager.Instance.HideCrosshair();
         });
 
 		
@@ -92,7 +86,7 @@ public class MainController : MonoBehaviour, IDynamicLoadListener {
 
     private IEnumerator WaitForAR(System.Action onReady)
     {
-        yield return new WaitUntil(() => MobileManager.IsReady);
+        yield return new WaitUntil(() => OnirixMobileManager.Instance.IsReady);
         onReady();
     }
 

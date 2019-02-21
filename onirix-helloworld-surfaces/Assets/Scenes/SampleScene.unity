@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -471,6 +471,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1711665555}
+  - component: {fileID: 1711665559}
   - component: {fileID: 1711665554}
   - component: {fileID: 1711665557}
   - component: {fileID: 1711665556}
@@ -530,11 +531,11 @@ MonoBehaviour:
   m_Script: {fileID: 37411169, guid: 754832bcf14ad46798155c1fdafbc8f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _default2DElement: {fileID: 1408934388374492, guid: a9d6da2f7267d43f4adbf037a8fec124,
+  _default2DElement: {fileID: 1392449664347130, guid: 74932667f8b474d41b38d3f3bb6d74bb,
     type: 2}
   _default3DElement: {fileID: 1331863014479234, guid: 0beac0bff137e4a3791883bfb31d7be6,
     type: 2}
-  _defaultVideoElement: {fileID: 1123254537698436, guid: ab53e2776a110454bba8970cde8b6c4b,
+  _defaultVideoElement: {fileID: 1524100016481000, guid: 360fa4719f76643af85329d7cd341ca1,
     type: 2}
   _defaultAudioElement: {fileID: 1817233494109462, guid: 0c61381efc77c4a7b9f8502983e6f9a5,
     type: 2}
@@ -562,10 +563,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a436c21b1b5f741a3826bfe3a4731463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI3NSwicHJvamVjdElkIjo1MTQsInJvbGUiOiJwcm9qZWN0IiwiaWF0IjoxNTQ4MDg4ODQ3fQ._pSoWM_ucg4QmRiLzHeIEwpmw0qrBf9iWo1t6tusbec
-  _targetOid: fecd240564f243da9609166fa916f1b8
+  _targetOid: <TARGET_OID_HERE>
   _loadTargetButton: {fileID: 1434236903}
   _statusText: {fileID: 1938272918}
+--- !u!114 &1711665559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1711665553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1710150095, guid: 754832bcf14ad46798155c1fdafbc8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _token: <PROJECT_TOKEN_HERE>
 --- !u!1 &1775756393
 GameObject:
   m_ObjectHideFlags: 0
