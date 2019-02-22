@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 1711665556}
   - component: {fileID: 1711665558}
   m_Layer: 0
-  m_Name: MainController
+  m_Name: Onirix
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
