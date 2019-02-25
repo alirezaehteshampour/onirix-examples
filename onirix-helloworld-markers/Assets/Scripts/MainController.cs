@@ -55,14 +55,14 @@ public class MainController : MonoBehaviour, IDynamicLoadListener
                     // Start markers detection
                     OnirixMobileManager.Instance.StartMarkerDetection
                     (
-                        (detectedTarget) =>
+                        (targetOid) =>
                         {
                             // Hide the default crosshair
                             OnirixMobileManager.Instance.HideCrosshair();
 
                             // When a marker is detected. Let's load it's assets .
                             _statusText.text = "Loading target {detectedTarget}, please wait ...";
-                            OnirixDynamicLoader.Instance.LoadTarget(detectedTarget);
+                            OnirixDynamicLoader.Instance.LoadTarget(targetOid);
                         }
                     );
 

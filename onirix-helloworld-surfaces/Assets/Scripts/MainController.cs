@@ -7,13 +7,9 @@ using UnityEngine.UI;
 
 public class MainController : MonoBehaviour, IDynamicLoadListener 
 {
-    private const string TargetOidPlaceholder = "<TARGET_OID_HERE>";
-
-    [SerializeField] private string _targetOid = TargetOidPlaceholder;
+    [SerializeField] private string _targetOid = "<TARGET_OID_HERE>";
     [SerializeField] private Button _loadTargetButton;
     [SerializeField] private Text   _statusText;
-
-    public string TargetOid { get; private set; }
 
     public void OnTargetAssetsDownloaded(Target target)
     {
@@ -34,11 +30,6 @@ public class MainController : MonoBehaviour, IDynamicLoadListener
     public void OnTargetAssetsStartLoading(Target target)
     {
         _statusText.text = "Target assets started loading!";
-    }
-
-    void Awake ()
-    {
-        TargetOid = (_targetOid.Equals(TargetOidPlaceholder) ? null : _targetOid);
     }
 
     // Use this for initialization
@@ -75,7 +66,7 @@ public class MainController : MonoBehaviour, IDynamicLoadListener
 
         _loadTargetButton.onClick.AddListener(() =>
         {
-            OnirixDynamicLoader.Instance.LoadTarget(TargetOid);
+            OnirixDynamicLoader.Instance.LoadTarget(_targetOid);
             _statusText.text = "Loading target, please wait ...";
             _loadTargetButton.interactable = false;
             OnirixMobileManager.Instance.HideCrosshair();
