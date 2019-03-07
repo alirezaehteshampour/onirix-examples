@@ -1,4 +1,4 @@
-# Onirix iOS integation
+# Onirix iOS integration
 
 This project contains the code for the following Onirix Tutorial:
 
