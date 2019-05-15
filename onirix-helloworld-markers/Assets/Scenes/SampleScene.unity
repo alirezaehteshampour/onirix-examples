@@ -402,6 +402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 994504711}
   - component: {fileID: 994504712}
+  - component: {fileID: 994504713}
   - component: {fileID: 994504710}
   - component: {fileID: 994504709}
   - component: {fileID: 994504708}
@@ -440,9 +441,13 @@ MonoBehaviour:
     type: 2}
   _default3DElement: {fileID: 1331863014479234, guid: 0beac0bff137e4a3791883bfb31d7be6,
     type: 2}
-  _defaultVideoElement: {fileID: 1524100016481000, guid: 360fa4719f76643af85329d7cd341ca1,
+  _defaultVideoElement: {fileID: 1851089376683300, guid: b97cd499a60974a51878f5a8dff8d37e,
     type: 2}
   _defaultAudioElement: {fileID: 1817233494109462, guid: 0c61381efc77c4a7b9f8502983e6f9a5,
+    type: 2}
+  _defaultLabelElement: {fileID: 1344333207169904, guid: 4a3ce61080a2e4eb199ac3662a55e8ff,
+    type: 2}
+  _reflectionProbe: {fileID: 1760596844975996, guid: 853f20f3f693c421487bcc80fddfa722,
     type: 2}
 --- !u!114 &994504709
 MonoBehaviour:
@@ -468,6 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02df8956ac6744f7bb02b2507251b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _autoBoot: 1
   _legacyCamera: {fileID: 1376013481701638, guid: 510f592038d8e7f4db2737ce632b2def,
     type: 2}
   _arcoreCamera: {fileID: 1772147192650458, guid: 1e815f7430b2f074fb7bea9ba6f43cf4,
@@ -505,6 +511,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _token: <PROJECT_TOKEN_HERE>
+--- !u!114 &994504713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 994504706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 855991983, guid: 754832bcf14ad46798155c1fdafbc8f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1928636844
 GameObject:
   m_ObjectHideFlags: 0
